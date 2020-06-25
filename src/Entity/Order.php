@@ -27,7 +27,7 @@ class Order
     /**
      * @var Product[]
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="id")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product")
      *
      * @Groups({"api"})
      */
