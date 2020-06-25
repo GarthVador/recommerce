@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -18,6 +19,8 @@ class Order
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"api"})
      */
     private $id;
 
@@ -25,6 +28,8 @@ class Order
      * @var Product[]
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="id")
+     *
+     * @Groups({"api"})
      */
     private $mobiles;
 
@@ -33,16 +38,22 @@ class Order
      * @Assert\Email()
      *
      * @ORM\Column(type="string", name="customer_email")
+     *
+     * @Groups({"api"})
      */
     private $customerEmail;
 
     /**
      * @var float
+     *
+     * @Groups({"api"})
      */
     private $amount;
 
     /**
      * @var \DateTime
+     * @Groups({"api"})
+     *
      */
     private $created;
 

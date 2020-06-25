@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -15,6 +16,8 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"api"})
      */
     private $id;
 
@@ -22,6 +25,8 @@ class Product
      * @var Brand
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Brand")
+     *
+     * @Groups({"api"})
      */
     private $brand;
 
@@ -29,6 +34,8 @@ class Product
      * @var string
      *
      * @ORM\Column(type="string", name="name")
+     *
+     * @Groups({"api"})
      */
     private $name;
 
@@ -36,6 +43,8 @@ class Product
      * @var float
      *
      * @ORM\Column(type="float", name="price")
+     *
+     * @Groups({"api"})
      */
     private $price;
 

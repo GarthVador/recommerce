@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -16,6 +17,8 @@ class Brand
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"api"})
      */
     private $id;
 
@@ -23,6 +26,8 @@ class Brand
      * @var string
      *
      * @ORM\Column(type="string", name="name")
+     *
+     * @Groups({"api"})
      */
     private $name;
 
