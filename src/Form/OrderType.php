@@ -26,6 +26,4 @@ class OrderType extends AbstractType
     {
         $resolver->setDefault('data_class', Order::class);
     }
-
-
 }

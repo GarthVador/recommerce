@@ -20,13 +20,12 @@ final class Version20200625145956 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE "order" ADD created TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
+        $this->addSql('ALTER TABLE "mobile_order" ADD created TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE SCHEMA public');
-        $this->addSql('ALTER TABLE "order" DROP created');
+        $this->addSql('ALTER TABLE "mobile_order" DROP created');
     }
 }
