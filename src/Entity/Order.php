@@ -24,7 +24,7 @@ class Order
     /**
      * @var Product[]
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Product")
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="id")
      */
     private $mobiles;
 
