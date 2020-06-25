@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Form\OrderType;
 use App\Repository\OrderRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -34,5 +38,23 @@ class OrderController extends AbstractApiController
     public function getorder(Order $order)
     {
         return $this->createApiResponse($order);
+    }
+
+    /**
+     * @Route(methods={"POST"}, name="api_create_order")
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return JsonResponse
+     */
+    public function createOrder(Request $request, EntityManagerInterface $em)
+    {
+        $form = $this->createForm(OrderType::class);
+        $order = $this->processForm($request, $form);
+
+        $em->persist($order);
+        $em->flush();
+
+        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 }

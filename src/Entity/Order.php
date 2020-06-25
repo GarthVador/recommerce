@@ -52,8 +52,10 @@ class Order
 
     /**
      * @var \DateTime
-     * @Groups({"api"})
      *
+     * @ORM\Column(type="datetime", name="created")
+     *
+     * @Groups({"api"})
      */
     private $created;
 
@@ -65,7 +67,7 @@ class Order
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -101,7 +103,7 @@ class Order
     /**
      * @return string
      */
-    public function getCustomerEmail(): string
+    public function getCustomerEmail(): ?string
     {
         return $this->customerEmail;
     }
@@ -119,7 +121,7 @@ class Order
     /**
      * @return float
      */
-    public function getAmount(): float
+    public function getAmount(): ?float
     {
         $amount = 0;
 
@@ -132,9 +134,18 @@ class Order
     }
 
     /**
+     * @return $this
+     */
+    public function setCreated(): self
+    {
+        $this->created = new \DateTime();
+        return $this;
+    }
+
+    /**
      * @return \DateTime
      */
-    public function getCreated(): \DateTime
+    public function getCreated(): ?\DateTime
     {
         return $this->created;
     }
